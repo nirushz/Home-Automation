@@ -35,17 +35,14 @@ public class DevicesServlet extends HttpServlet {
 		
 		// Save/Get the DataCrud (using the same one and not creating a new crud each time)
 		ServletContext context = request.getSession().getServletContext();
-		Object crud =  context.getAttribute("DevicesCrud");
+		DevicesCrud crud =  (DevicesCrud) context.getAttribute("DevicesCrud");
 		if (null == crud) {
-			System.out.println("GET DevicesCrud crud is null"); /*TODO remove */
 			crud = new DevicesCrud(DBNAME, TABLE_NAME);
 			context.setAttribute("DevicesCrud", crud);
 		}
 		
-		JSONArray jsonArray = ((DevicesCrud) crud).read(0);
-		System.out.println("crud GET="+ crud);
+		JSONArray jsonArray = crud.read(0);
 		
-		//response.setContentType("application/json");
 		response.getWriter().print(jsonArray);
 	}
 
@@ -62,16 +59,13 @@ public class DevicesServlet extends HttpServlet {
 				
 		//Get the crud from ServletContext (instead of CrudPool)
 		ServletContext context = request.getSession().getServletContext();
-		Object crud =  context.getAttribute("DevicesCrud");
+		DevicesCrud crud =  (DevicesCrud) context.getAttribute("DevicesCrud");
 		if (null == crud) {
-			System.out.println("POST DevicesCrud crud is null");
 			crud = new DevicesCrud(DBNAME, TABLE_NAME);
 			context.setAttribute("DevicesCrud", crud);
 		}
 				
-		System.out.println("crud POST="+ crud);
-		int valid = ((DevicesCrud) crud).create(data);
-		
+		int valid =  crud.create(data);
 		if (1 == valid || 2 == valid) { //Success
 			response.getWriter().write("http://localhost:8080/DeviceRegister/devices-list2.html");
 		}
@@ -86,6 +80,7 @@ public class DevicesServlet extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println(request.getParameter("name"));
 		ServletContext context = request.getSession().getServletContext();
 		DevicesCrud crud =  (DevicesCrud) context.getAttribute("DevicesCrud");
 		crud.delete(Integer.parseInt(request.getParameter("deviceID")));

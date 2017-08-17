@@ -4,28 +4,6 @@ window.addEventListener('load', function(ev){
 
 
 var devicesList = document.getElementById("deviceUL");
-var mainClasses = document.getElementsByClassName("main");
-var mainClassesArray = Object.keys(mainClasses).map(key => mainClasses[key]);
-
-function openNav() {
-    document.getElementById("deviceUL").style.width = "250px";
-    document.getElementById("mySidenav").style.width = "250px";
-    
-    mainClassesArray.forEach(function(item) {
-	item.style.marginLeft = "250px";
-    })
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("deviceUL").style.width = "0";
-    
-    mainClassesArray.forEach(function(item) {
-    	item.style.marginLeft = "0";
-    	console.log(item);
-        })
-}
-
 
 //sent http POST request to DevicesServlet 
 function post() {	
@@ -48,10 +26,7 @@ function post() {
 	
 	$.post("http://localhost:8080/DeviceRegister/getDevices",
 			{companyName:companyName, deviceName:deviceName, deviceID:deviceID, userID:userID},
-			function(data) {
-				console.log(data);
-				//getDevices();
-				
+			function(data) {				
 				//SQL error codes handeling;
 				switch (data) {
 				case '1062': errorMsgPlaceHolder.innerHTML = "Device Id is already used";
@@ -92,9 +67,6 @@ function getDevices(){
             	*/
             	var trashSpan = document.createElement("span");
             	trashSpan.className += " glyphicon glyphicon-trash";
-//            	trashSpan.style.position = 'absolute';
-//            	trashSpan.style.left = '95%';
-//            	trashSpan.style.top = '12px';
             	trashSpan.style.float = 'right';
             	trashSpan.addEventListener('click', deleteListItem, true);
             	li.appendChild(trashSpan);
@@ -116,10 +88,10 @@ function deleteListItem(ev){
 	$.ajax({
 	    url: 'http://localhost:8080/DeviceRegister/getDevices' + '?' + $.param({"deviceID": deviceID}),
 	    type: 'DELETE',
-	    //data: {deviceID:deviceID},
-	    success: function(result) {
-	    	console.log(result);
-	    }
+//	    data: {"deviceID":deviceID},
+//	    success: function(result) {
+//	    	console.log(result);
+//	    }
 	});
 }
 

@@ -25,17 +25,7 @@ public class DataCrud extends Crud<Integer,RegisterDeviceData>{
 	JSONArray read(Integer deviceID) throws IOException {
 		JSONArray jsonArray = new JSONArray();
 		PreparedStatement pst;
-		
-		try {
-			String useDB = "USE "+ getDBName();
-			pst = getCon().prepareStatement(useDB);
-			int rs2 = pst.executeUpdate(useDB);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		
 		String read = "SELECT * FROM "+ getTableName() + " where deviceID=" + deviceID;
-		System.out.println(read);
 		
 		try {
 			pst = getCon().prepareStatement(read);
@@ -51,7 +41,6 @@ public class DataCrud extends Crud<Integer,RegisterDeviceData>{
 			e.printStackTrace();
 		}
 		
-		//System.out.println(jsonArray);
 		return jsonArray;
 	}
 

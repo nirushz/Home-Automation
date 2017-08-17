@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.json.JSONArray;
 
 /**
@@ -20,7 +19,6 @@ public class DataServlet extends HttpServlet {
 	
 	private static final String  DB_NAME = "nircompany";
 	private static final String  TABLE_NAME = "data";
-
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,18 +36,13 @@ public class DataServlet extends HttpServlet {
 		ServletContext context = request.getSession().getServletContext();
 		Object crud =  context.getAttribute("DataCrud");
 		if (null == crud) {
-			System.out.println("GET DataCrud crud is null"); /*TODO remove */
 			crud = new DataCrud(DB_NAME, TABLE_NAME);
 			context.setAttribute("DataCrud", crud);
 		}
 		
 		int deviceID = Integer.parseInt(request.getParameter("deviceID"));
-		System.out.println("deviceID=" + deviceID);
-		
 		JSONArray jsonArray = ((DataCrud) crud).read(deviceID);
-		System.out.println("DataCrud GET="+ crud);
 		
-		//response.setContentType("application/json");
 		response.getWriter().print(jsonArray);
 
 	}

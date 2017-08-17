@@ -39,15 +39,6 @@ public class DevicesCrud extends Crud<Integer,RegisterDeviceData>{
 	JSONArray read(Integer deviceID) throws IOException {
 		JSONArray jsonArray = new JSONArray();
 		PreparedStatement pst;
-		/*
-		try {
-			String useDB = "USE "+ getDBName();
-			pst = getCon().prepareStatement(useDB);
-			int rs2 = pst.executeUpdate(useDB);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		*/
 		String read = "SELECT * FROM "+ getTableName();
 		try {
 			pst = getCon().prepareStatement(read);
@@ -68,10 +59,6 @@ public class DevicesCrud extends Crud<Integer,RegisterDeviceData>{
 		return jsonArray;
 	}
 
-	@Override
-	void update(Integer deviceID, RegisterDeviceData data) throws IOException {
-		
-	}
 
 	@Override
 	void delete(Integer deviceID) throws IOException {
@@ -87,6 +74,9 @@ public class DevicesCrud extends Crud<Integer,RegisterDeviceData>{
 		}
 	}
 		
+	@Override
+	void update(Integer deviceID, RegisterDeviceData data) throws IOException {
 		
+	}
 
 }
