@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+ 
+<meta charset="UTF-8">
+<title>Full stack project</title>
+<style>
+
+.myprogress {
+	height: 30px;
+}
+
+
+.myprogressbar {
+	font-size: 18px;
+	padding-top:5px;
+}
+
+.bg-grey {
+      background-color: #f6f6f6;
+}
+
+
+#content-grid{
+padding-bottom:20px
+}
+
+#contact{
+padding:20px 0;
+}
+
+.footer {
+//position:absolute;
+//buttom:0;
+height:60px;
+//width:100%;
+padding-top:20px;
+color: grey;
+}
+
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span> 
+	    </button>
+    	<a class="navbar-brand" href="#">Home Automation</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+	   	<form class="navbar-form navbar-right" role="search" action="http://localhost:8080/DeviceRegister/devices-list2.html" method="post">
+		    <div class="form-group">
+		        <input type="text" class="form-control" name="username" placeholder="Username">
+		    </div>
+		    <div class="form-group">
+		        <input type="password" class="form-control" name="password" placeholder="Password">
+		    </div>
+		    <button type="submit" class="btn btn-success">Sign In</button>
+	   	</form>
+   	</div>
+  </div>
+</nav>
+
+<!-- Jumbotron -->
+<div class="jumbotron">
+	<div class="container">
+		<h1>Home Automation </h1>
+		<p>Save your smart home devices, follow their data, analyze it and save money! </p>
+		
+		<div class="progress myprogress">
+		    <div class="progress-bar progress-bar-success myprogressbar" role="progressbar" style="width:34%">
+		      Save your data
+		    </div>
+		    <div class="progress-bar progress-bar-warning myprogressbar" role="progressbar" style="width:33%">
+		      Follow it
+		    </div>
+		    <div class="progress-bar progress-bar-info myprogressbar" role="progressbar" style="width:33%">
+		      Analize it
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Container (Grid Section) -->
+<div class="container" id="content-grid">
+	<div class="row">
+		<div class="col-sm-4" align="center">
+			<h1>Save</h1>
+			<img src="http://labs.sogeti.com/wp-content/uploads/2015/08/databases.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+			<p>Lorem ipsum dolor sit amet, ea libris blandit quo. Duo ad doctus sensibus recteque, nam id nisl cibo persius. Ius cu fastidii molestiae, ut brute semper principes duo. Ad eligendi constituam usu, maiorum antiopam constituam ne mei.</p> 	 
+		</div>
+		<div class="col-sm-4" align="center">
+			<h1>Follow</h1>
+			<img src="http://labs.sogeti.com/wp-content/uploads/2015/08/databases.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+			<p>Lorem ipsum dolor sit amet, ea libris blandit quo. Duo ad doctus sensibus recteque, nam id nisl cibo persius. Ius cu fastidii molestiae, ut brute semper principes duo. Ad eligendi constituam usu, maiorum antiopam constituam ne mei.</p> 
+		</div>
+		<div class="col-sm-4" align="center">
+			<h1>Analyze</h1>
+			<img src="http://labs.sogeti.com/wp-content/uploads/2015/08/databases.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+			<p>Lorem ipsum dolor sit amet, ea libris blandit quo. Duo ad doctus sensibus recteque, nam id nisl cibo persius. Ius cu fastidii molestiae, ut brute semper principes duo. Ad eligendi constituam usu, maiorum antiopam constituam ne mei.</p> 
+		</div>
+	</div>
+
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+	<h2 class="text-center">CONTACT US</h2><br>
+	<div class="row">
+	  <div class="col-sm-4 col-sm-offset-2">
+	    <p>Contact us and we'll get back to you within 24 hours.</p>
+	    <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+	    <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+	    <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+	  </div>
+	  <div class="col-sm-4 slideanim">
+	    <div class="row">
+	      <div class="col-sm-6 form-group">
+	        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+	      </div>
+	      <div class="col-sm-6 form-group">
+	        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+	      </div>
+	    </div>
+	    <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+	    <div class="row">
+	      <div class="col-sm-12 form-group">
+	        <button class="btn btn-default pull-right" type="submit">Send</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+
+<!-- Footer -->
+ <footer class="footer navbar-inverse">
+	<div class="container">
+		© Home Automation &nbsp;&nbsp;
+		<a href="mailto:nir@a.com"><span class="glyphicon glyphicon-envelope"></span></a>
+	</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

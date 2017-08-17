@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Bootstrap CSS -->   
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- My CSS -->    
+<link rel="stylesheet" type="text/css" href="register-device.css">
+ 
+<meta charset="UTF-8">
+<title>Full stack project</title>
+<style>
+
+#deviceUL li{
+	cursor:pointer;
+	//text-align: center;
+	font-size:16px;
+}
+
+.footer {
+position:fixed;
+bottom:0;
+height:60px;
+width:100%;
+padding-top:20px;
+color: grey;
+}
+
+#addDeviceBtn {
+	width:200px;
+}
+
+#errorMsg {
+	margin: 5px;
+}
+
+</style>
+
+</head>
+	
+<body>
+<!-- Menu -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+    	<a class="navbar-brand" href="#">Home Automation</a>
+    </div>   
+  </div>
+</nav>
+
+<!-- Jumbotron -->
+<div class="jumbotron">
+	<div class="container">
+		<h1>Your Devices List: </h1>
+	</div>
+</div>
+
+
+<div class="container">
+	<div align="center">
+		<button type="button" id="addDeviceBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;&nbsp;Add device</button><br><br>
+	</div>
+	
+	<!-- Modal -->
+  	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+	    	<!-- Modal content-->
+	    	<div class="modal-content">
+	        	<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        		<h4 class="modal-title">Add Device</h4>
+	        	</div>
+	        	<div class="modal-body">
+	        	<p>all fields are required.</p>
+	        	<form action="http://localhost:8080/DeviceRegister/Servlet" method="post">
+	        		<div class="form-group">
+      					<label for="companyName">Select Company Name</label>
+							<select class="form-control" id="companyName" name="companyName">
+							    <option value="IBM">IBM</option>
+							    <option value="HP">HP</option>
+							    <option value="SAMSUNG">SAMSUNG</option>
+							</select>
+					</div>
+					 <div class="form-group">
+					      <label for="deviceName">*Device Name:</label>
+					      <input type="text" class="form-control" id="deviceName" placeholder="Enter device Name" name="deviceName" maxlength="25">
+					</div>
+					<div class="form-group">
+					      <label for="deviceID">*Device ID: (number only)</label>
+					      <input type="text" class="form-control" id="deviceID" placeholder="Enter device ID" name="deviceID" maxlength="9">
+					</div>
+
+					<input class="btn btn-primary" type="button" value="SEND" onclick=post()>
+					
+					<p id="errorMsg" class="bg-danger"></p>
+				</form>
+				</div>
+				<div class="modal-footer">
+	          		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        	</div>
+	      	</div>  
+	    </div>
+    </div>
+	<!-- Devices List -->
+	<ul class="list-group" id="deviceUL">
+	</ul>
+	
+  	<!-- Jumbotron for device data -->
+	<div class="jumbotron">
+		<h2>Your device data:</h2>
+	  	<p id="deviceData">Click on device to see it's data</p><br>
+	</div>
+
+</div>
+
+
+<!-- Footer -->
+ <footer class="footer navbar-inverse">
+	<div class="container">
+		© Home Automation &nbsp;&nbsp;
+		<a href="mailto:nir@a.com"><span class="glyphicon glyphicon-envelope"></span></a>
+	</div>
+</footer>
+
+
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</body>
+<!-- MyJS -->
+<script type="text/javascript" src="register-device.js"></script>
+  
+</html>
