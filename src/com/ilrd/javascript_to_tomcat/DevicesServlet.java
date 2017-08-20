@@ -69,10 +69,8 @@ public class DevicesServlet extends HttpServlet {
 		if (1 == valid || 2 == valid) { //Success
 			response.getWriter().write("http://localhost:8080/DeviceRegister/devices-list2.html");
 		}
-		else {	//Error (got error code)
-			
+		else {	//Error (got error code)	
 			/* TODO  complete error handling*/
-			System.out.println("valid="+ valid);
 			response.getWriter().write(Integer.toString(valid));
 		}
 	}
@@ -80,9 +78,13 @@ public class DevicesServlet extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println(request.getParameter("name"));
 		ServletContext context = request.getSession().getServletContext();
 		DevicesCrud crud =  (DevicesCrud) context.getAttribute("DevicesCrud");
+		if (null == crud) {
+			crud = new DevicesCrud(DBNAME, TABLE_NAME);
+			context.setAttribute("DevicesCrud", crud);
+		}
+		
 		crud.delete(Integer.parseInt(request.getParameter("deviceID")));
 	}
 }
