@@ -1,5 +1,6 @@
 window.addEventListener('load', function(ev){
 	getDevices();
+	
 }, false);
 
 
@@ -12,6 +13,7 @@ function post() {
 	var deviceID = $("#deviceID").val();
 	var userID = 1234;  /*TODO get userID from local storage or cookie*/
 	var errorMsgPlaceHolder = document.getElementById("errorMsg");
+	
 	
 
 	if (deviceName == "") {
@@ -33,9 +35,24 @@ function post() {
 					return;
 				}
 			
-				window.location.replace(data);
+				//window.location.replace(data);
+				$('#deviceUL').empty();
+				getDevices();
+				$('#myModal').modal('hide')
+				$("#deviceName").val("");
+				$("#deviceID").val("");
+				
+				/* using 'noty' jquery plugin for notification*/
+				new Noty({
+				    text: deviceName + " succesfully added",
+				    timeout: 2000,
+				    type: 'error'
+				}).show();
+				
 			}
 	);	
+	
+
 }
 
 
@@ -55,16 +72,7 @@ function getDevices(){
             	li.className += " list-group-item";
             	li.addEventListener('click', getDeviceData, false);
             	devicesList.appendChild(li);
-            	/*
-            	var badgeSpan = document.createElement("span");
-            	badgeSpan.appendChild(document.createTextNode(parsedJSON[i].companyName));
-            	badgeSpan.className += " badge";
-            	badgeSpan.style.position = 'absolute';
-            	badgeSpan.style.left = '80%';
-            	badgeSpan.style.top = '12px';
-            	badgeSpan.style.float = 'none';
-            	li.appendChild(badgeSpan);
-            	*/
+            
             	var trashSpan = document.createElement("span");
             	trashSpan.className += " glyphicon glyphicon-trash";
             	trashSpan.style.float = 'right';
